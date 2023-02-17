@@ -197,6 +197,16 @@ section .container .user .formBx form input[type='submit'] {
   letter-spacing: 1px;
   transition: 0.5s;
 }
+section .container .user .formBx form input[type='button'] {
+  max-width: 100px;
+  background: #677eff;
+  color: #fff;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  transition: 0.5s;
+}
 
 section .container .user .formBx form .signup {
   position: relative;

@@ -1,14 +1,25 @@
 import Link from 'next/link'
+import { useState } from 'react'
 export default function Login() {
+  const [data, setData] = useState({
+    username: "",
+    password: ""
+  })
+  const handleInput = () => {
+    console.log("sdkfhskjdf");
+  }
+  const handleLogin = () => {
+    console.log("LOGIN BUTTON CLICKED")
+  }
   return (
     <>
       <div className='user signupBx'>
         <div className='formBx'>
-          <form action="">
+          <form>
             <h2>Sign In</h2>
-            <input type="text" name="" placeholder="Username" />
-            <input type="password" name="" placeholder="Password" />
-            <input type="submit" name="" value="Login" />
+            <input type="text" onChange={handleInput} value={data.username} placeholder="Username" />
+            <input type="password" onChange={handleInput} value={data.password} placeholder="Password" />
+            <input type="submit" onClick={handleLogin} value="Login" />
           </form>
         </div>
         <div className='imgBx'>

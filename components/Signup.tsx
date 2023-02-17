@@ -1,7 +1,15 @@
-import Link from "next/link";
-
+import { useState } from "react"
 export default function Signup() {
-  const toggleForm = () => {
+  const [data, setData] = useState({
+    username: "",
+    password: "",
+    email: "",
+    cpassword: ""
+  })
+  const handleInput = (e) => {
+    setData({ ...data, [e.target.name]: e.target.value });
+  }
+  const handleSubmit = () => {
     
   }
   return (<>
@@ -12,13 +20,13 @@ export default function Signup() {
           alt="" />
       </div>
       <div className="formBx">
-        <form action="">
+        <form>
           <h2>Create an account</h2>
-          <input type="text" name="" placeholder="Username" />
-          <input type="email" name="" placeholder="Email Address" />
-          <input type="password" name="" placeholder="Create Password" />
-          <input type="password" name="" placeholder="Confirm Password" />
-          <input type="submit" name="" value="Sign Up" />
+          <input type="text" name="username" onChange={handleInput} value={data.username} placeholder="Username" />
+          <input type="email" name="email" onChange={handleInput} value={data.email} placeholder="Email Address" />
+          <input type="password" name="password" onChange={handleInput} value={data.password} placeholder="Create Password" />
+          <input type="password" name="cpassword" onChange={handleInput} value={data.cpassword} placeholder="Confirm Password" />
+          <input type="button" onClick={handleSubmit} value="Sign Up" />
         </form>
       </div>
     </div>
