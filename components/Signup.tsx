@@ -10,8 +10,9 @@ export default function Signup() {
     setData({ ...data, [e.target.name]: e.target.value });
   }
   const handleSubmit = () => {
-    
+    fetch('/api/user/signin').then((res) => res.json())
   }
+
   return (<>
     <div className="user signinBx">
       <div className="imgBx">
