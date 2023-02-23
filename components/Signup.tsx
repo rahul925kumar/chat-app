@@ -1,4 +1,5 @@
 import { useState } from "react"
+import { ToastContainer, toast } from 'react-toastify';
 export default function Signup() {
   const [data, setData] = useState({
     username: "",
@@ -10,9 +11,20 @@ export default function Signup() {
     setData({ ...data, [e.target.name]: e.target.value });
   }
   const handleSubmit = () => {
-    fetch('/api/user/signin').then((res) => res.json())
+    if (data.password != data.cpassword) {
+      toast.error("Password doesn't macthed!")
+    } else if (data.username == '' || data.email == '' || data.password == '') {
+      toast.error("Fill all fields!")
+    } else {
+      fetch('/api/user/signup', {
+        method: 'POST',
+        body: JSON.stringify(data)
+      }).then(response => response.json()).then((data) => {
+        console.log("data", data)
+      })
+    }
+    return false
   }
-
   return (<>
     <div className="user signinBx">
       <div className="imgBx">
@@ -31,5 +43,17 @@ export default function Signup() {
         </form>
       </div>
     </div>
+    <ToastContainer
+      position="top-center"
+      autoClose={2500}
+      hideProgressBar={false}
+      newestOnTop={false}
+      closeOnClick
+      rtl={false}
+      pauseOnFocusLoss
+      draggable
+      pauseOnHover
+      theme="dark"
+    />
   </>)
 }

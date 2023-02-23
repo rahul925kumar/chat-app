@@ -1,7 +1,7 @@
 import Signup from '../../components/Signup';
 import Login from '../../components/Login';
 import { useState } from 'react';
-import Link from 'next/link';
+import 'react-toastify/dist/ReactToastify.css';
 export default function user() {
   const [active, setActive] = useState<boolean>(false);
   const toggleForm = () => {

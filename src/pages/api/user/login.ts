@@ -11,6 +11,10 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       where: {
         email: req.body.email,
       },
+      select: {
+        email: true,
+        password: true,
+      }
     })
     if (user) {
       let pass_valid = await bcrypt.compare(req.body.password, user.password);
